@@ -23,6 +23,7 @@
 #write(x, "cbblog12.html")
 
 # Instead, read in from local copy:
+setwd('/Users/Frank/Courses/stat530/week1/Hoops/')
 x <- scan("cbblog12.html", what="", sep="\n")
 length(x)
 

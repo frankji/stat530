@@ -12,8 +12,8 @@
 ## do something, start with the United Airlines subset that I
 ## provide and begin to explore.
 ##
-
-x <- read.csv("1995.csv", as.is=TRUE)
+setwd('/Users/Frank/Courses/stat530/week1/FlightDelays/')
+x <- read.csv("UA1995.csv", as.is=TRUE)
 
 dim(x)                    # How big is this data set?
 names(x)                  # What are the variable names?

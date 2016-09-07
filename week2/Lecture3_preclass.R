@@ -174,8 +174,9 @@ plot(x$tempF, x$chirppersec)
 # it's a matter of choice.  I'll mostly use x out of habit, but there is nothing
 # sacred about that choice.
 
-aq <- read.csv("http://www.stat.yale.edu/~jay/230/Week2/aqm-june-2016.csv")
+aq <- read.csv("http://www.stat.yale.edu/~jay/230/Week2/aqm-june-2016.csv", as.is = TRUE, skip = 5, header = FALSE)
 dim(aq)
 head(aq)
 tail(aq)
-
+str(aq)
+names(aq)<-c('Date', 'Time', 'Chennai', 'Kolkata', 'Hyderabad', 'Mumbai', 'Delhi')

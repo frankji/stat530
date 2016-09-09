@@ -89,14 +89,14 @@ tail(x)
 # Call ggplot2
 library('ggplot2')
 # Create a plot panel with box plot
-mice.box<-ggplot(data = x, aes(x = factor(GROUP), y = ZINC))+
-  stat_boxplot(geom = 'errorbar', width = 0.3)+
-  geom_boxplot(aes(fill = factor(GROUP)), size=1)
-# Add the label and change the theme.
-mice.box<-mice.box+xlab('GROUP')+ 
-  theme_classic()+theme(text = element_text(size=25))+guides(fill=FALSE)
-# Show the figure
-mice.box
+
+par(mgp = c(2, 1, 0), font.axis=2)
+boxplot(ZINC ~ GROUP, data = x, col = c('brown1', 'cyan3'),
+        xlab = 'Group', ylab = 'Zinc', ylim = c(1,1.8),
+        cex.lab=1.2, cex.axis=1)
+axis(1, lwd=2, at = c(1, 2), labels=FALSE)
+axis(2, lwd=2)
+
 
 # End of Problem A
 ################################################################################
@@ -141,15 +141,16 @@ length(which(x$GROUP=='B'))
 # investigate the function mosaicplot() in R).  Experiment with R and
 # show us that you can manage the basics.
 
-# Gene scoring data from Sfari including top genes related to autism
-# and their refenrences and scores
-score<-read.csv(file = 'gene-score.csv', header = TRUE)
-# Look at the head of it
-head(score)
-# Look at the tail of it
-tail(score)
+# The expression profile of gene 'scap' in different brain regions and time 
+# period
+SCAP<-read.csv(file = 'SCAP_exp.csv', as.is = TRUE)
+dim(SCAP)
+names(SCAP)
 
-
+apply(SCAP, 2, mean)
+hist(as.vector(as.matrix(SCAP)), xlab = 'Expression Level',
+     breaks=30, main = 'Histogram of Exp')
+heatmap(as.matrix(SCAP), Rowv  = NA)
 
 # End of code/discussion for Problem C
 ################################################################################

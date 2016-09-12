@@ -2,52 +2,10 @@
 #
 # I worked with * list other students here if applicable *
 #
-# STAT 230 Homework 1
+# STAT 530 Homework 1
 # Due Monday, September 12, 9 AM
 #
 ################################################################################
-# INSTRUCTIONS begin here.
-#
-# AFTER doing the homework and BEFORE "compiling notebook" and printing,
-# please DELETE this instruction section.  Save a tree.  (-- 1 point --)
-#
-# READ & REVIEW: the syllabus and everything posted thus far on
-#        http://www.stat.yale.edu/~jay/230/
-# In particular, this includes the somewhat lengthy ExtraIntroMaterial.pdf.
-# You don't need to be confident at all with the code in this document, but
-# you should understand the spirit of what is done.  Parts of the document
-# relate directly or indirectly to parts of Homework 1.
-#
-# - Download a copy of this script to your computer.
-# - Download Zinc.csv
-# - Put them into a new Homework1 folder.  Stay organized.
-# - Edit this document directly in R Studio as you work (never edit scripts
-#   in MS Word -- nasty things happen with formatting and special characters)
-# - Did you put your name at the top as indicated?
-# - You'll write some basic code in this document, including code to
-#   produce a plot.  When you do "compile notebook" the plot will be
-#   automatically included in a file (likely HTML, but possibly PDF for some
-#   of you).  You print that.  You don't print this script itself.
-# - You'll need to submit two answers in ClassesV2 in the Tests & Quizzes area.
-# - Compile this document!
-# - Print and staple, hand in at the beginning of class.
-# - An electronic copy of this R script uploaded to ClassesV2 as insurance
-#   *** prior to 9 AM ***.  Something gets lost?  No problem, you have
-#   proof of work completed on time.  This saved more than a few students
-#   last year. (-- 1 point -- awarded for doing this!  So your uploaded file
-#   needs to be called 'Homework1.R' with that precise capitalization!)
-#
-# To be clear -- because this is always a newbie gotcha:  Save this script
-# with only the .R extension (don't let your computer name it something
-# like Homework1.R.txt, for example) in a folder probably called "Homework1"
-# of a class folder (probably called "STAT230").  The same advice regarding
-# downloading Zinc.csv applies.  Keep your data analysis life well-organized
-# and it will save you time.  Your homework will add to this file, below
-# (that is, don't start a new file).
-#
-# END OF INSTRUCTIONS (delete instructions only once your work is complete,
-# but make sure you've completely read and followed the instructions before
-# deleting -- with such a large class, organization really matters for us)
 ################################################################################
 
 ############################################# 80 characters ####################
@@ -86,10 +44,6 @@ tail(x)
 
 # Your code to produce the plot for Problem A:
 
-# Call ggplot2
-library('ggplot2')
-# Create a plot panel with box plot
-
 par(mgp = c(2, 1, 0), font.axis=2)
 boxplot(ZINC ~ GROUP, data = x, col = c('brown1', 'cyan3'),
         xlab = 'Group', ylab = 'Zinc', ylim = c(1,1.8),
@@ -127,6 +81,8 @@ try(plot(x$ZINC[x$GROUP=="A"], x$ZINC[x$GROUP=="B"]))
 length(which(x$GROUP=='A'))
 # Sample number for B group
 length(which(x$GROUP=='B'))
+# t test of two groups
+t.test(ZINC~GROUP,data = x)
 # End of Problem B
 ################################################################################
 # Problem C: Go find a data set that is (preferably) a CSV file or some other
@@ -142,16 +98,44 @@ length(which(x$GROUP=='B'))
 # show us that you can manage the basics.
 
 # The expression profile of gene 'scap' in different brain regions and time 
-# period
+# periods
 SCAP<-read.csv(file = 'SCAP_exp.csv', as.is = TRUE)
+# Basic data check
 dim(SCAP)
 names(SCAP)
-
-apply(SCAP, 2, mean)
+head(SCAP)
+tail(SCAP)
+# Data distribution check
+sum_SCAP<-summary(SCAP)
+mean_SCAP<-as.numeric(gsub('[^0-9\\.]', '', sum_SCAP[4,]))
+mean_SCAP
+var_SCAP<-apply(SCAP,2,var)
+var_SCAP
 hist(as.vector(as.matrix(SCAP)), xlab = 'Expression Level',
      breaks=30, main = 'Histogram of Exp')
-heatmap(as.matrix(SCAP), Rowv  = NA)
+par(las = 2)
+#Function to flatten tables with col & row names
+trtab<-function(x, col.name){
+  rows<-rownames(x)
+  cols<-colnames(x)
+  col1<-rep(rows, length(cols))
+  col2<-rep(cols, each=length(rows))
+  col3<-as.vector(as.matrix(x))
+  X<-data.frame(cbind(col1, col2, col3), stringsAsFactors = FALSE)
+  colnames(X)<-col.name
+  return(X)
+}
+scap<-trtab(SCAP, c('Time', 'Region', 'Exp'))
+# ANOVA for randomized block design
+summary(aov(Exp~Time+Region ,data=scap))
 
+boxplot(SCAP, use.cols=TRUE)
+# Regions are not clustered by their physical location
+heatmap(as.matrix(SCAP), Rowv  = NA)
+#Normalize the data by columns
+norm_SCAP<-apply(SCAP, 2, function(x) ((x-mean(x))/sd(x)))
+# Regions are more likely to be juxtaposed based on location
+heatmap(norm_SCAP, Rowv  = NA)
 # End of code/discussion for Problem C
 ################################################################################
 #

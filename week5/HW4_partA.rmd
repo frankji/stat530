@@ -1,0 +1,150 @@
+---
+title: "Homework 4A"
+author: "Jay Emerson"
+date: "Due Wednesday 10/5/2016, 1 PM"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Opening comment
+
+This problem doesn't involve real data but is a real data analysis problem.
+I was asked to solve this exact problem only yesterday.  Given the course
+prerequisite, this problem is either an important review or important material
+to learn for the first time.  There is nothing really new in the R coding
+required for the solution (though it is more independent code creation
+than previous assignments).  And the coding required isn't long.  What is far
+more important is the understanding of the statistical concepts.
+
+
+## The Problem
+
+Researchers at a top medical school need your help.  They are studying
+"excessive weight gain" of women during pregnancy.  The medical
+profession has apparently defined "excessive weight gain" in some way
+that is widely accepted and is categorical.
+I don't know what that definition is, and I'm
+cynical about that sort of thing as a data analyst.  But this is all we
+have to go on, here.
+
+Nationwide, 47\% of women experience "excessive weight gain" during
+pregnancy.  This is a known fact and nothing needs to be estimated or
+studied in this respect.
+
+The medical school is designing a study of a new treatment (using the
+term loosly -- no information is available at this time) designed to 
+try to control "excessive weight gain".  They hope the new treatment
+can substantially reduce excessive weight gain.  They need help in determining
+a sample size for their study, and their objective is to seek 80\%
+power against a particular alternative hypothesis of 27\% weight gain
+(down from the standard 47\% observed in the population).
+
+What does this mean?  Well, the null hypothesis $H_0$ is one of "no difference"
+from the accepted standard of care -- i.e. that $p=0.47$.  If they study
+a sample of $n$ subjects who are given the new treatment and find a sample
+proportion $\widehat{p}$ "close to" $p=0.47$ they will fail to reject this
+null hypothesis.  They will use significance level $\alpha=0.05$ for this
+hypothesis test once they have real data.  This significance levels means
+that the chance of incorrectly rejecting $H_0$ (when $p=0.47$) must be
+less than or equal to 0.05.  This sort of mistake is sometimes called a
+Type I error.  Similarly, if they obtain a "small enough" $\widehat{p}$
+they will reject the null hypothesis in favor of the one-sided
+alternative $H_a$: $p < 0.47$.  In this case they will conclude that their
+evidence is convincing enough for them to claim that their treatment has
+merit.
+
+Given this test setup, they need to
+focus on the specific alternative $p=0.27$ for the purpose of determining
+the necessary sample size, $n$.  If this specific
+alternative hypothesis were true, their test (described in the previous
+paragraph) would have some chance
+of (correctly) rejecting $H_0$.  Of course it would also have some chance
+of (incorrectly) failing to reject $H_0$.  They want a large enough sample
+size $n$ so that the probability of rejecting $H_0$, when in fact $p=0.27$,
+is at least 80\% (0.8).  But trials are expensive, so they want the smallest
+$n$ in order to achieve this power of 80\%.  One minus the power is the
+probability of a Type II error: mistakenly retaining $H_0$ when in fact
+a particular alternative hypothesis is true.
+
+Quite simply, what is your sample size recommendation to the researchers?
+Please notice a hint later on that working with counts is much better
+than with proportions in solving this problem.
+
+\newpage
+
+## An aside
+
+Someone with a strong intro stats background might try to do this with
+normal approximations to the binomial.  For small/medium sample size
+situations like this, that approximation can give some funky results, and
+the algebra is really annoying.  Stay away from this, please.
+
+A better alternative uses exact binomial calculations, supported in R
+by `pbinom()`, `dbinom()`, and `qbinom()`.  We've already used `rbinom()`
+for simulating binomials with our Yale matriculation rate problem.
+
+The function `dbinom()` gives binomial probabilities of specific events.
+You flip a fair coin 10 times: what is the probability of exactly 5 heads?
+```{r}
+dbinom(5, 10, 0.5)
+```
+What is the probability of less than 5 heads (note "less than" and not
+"less than or equal to")?  Consider the following
+carefully:
+```{r}
+dbinom(0:4, 10, 0.5)
+sum(dbinom(0:4, 10, 0.5))
+pbinom(4, 10, 0.5)
+```
+And so we observe that `pbinom(q, size, prob)` gives the cumulative probability of
+`q` or fewer successes on `size` independent bernoulli trials each having success
+probability `prob`.
+
+The `qbinom(p, size, prob)` function returns the smallest outcome such that the
+cumulative probability of observing this outcome or less
+is greater than the specified probability `p`.
+```{r}
+qbinom(0.1, 10, 0.5)    # 0.1 is my choice here for this toy example
+pbinom(3, 10, 0.5)      # So 3 achieves just more than the desired probability
+pbinom(2, 10, 0.5)      # Here, P( Bin(10, 0.5) <= 2) is less than 0.1.
+                        #
+                        # (continued from the code above)
+                        # Whether you want 3 or 2 depends on the calculation
+                        # you are interested in.  When calculating a p-value,
+                        # for example, you are looking for a probability
+                        # less than or equal to your signicicance level alpha
+                        # in order to reject the null hypothesis.
+```
+
+
+## Solution guidelines
+
+For some candidate sample size $n$ and the null hypothesis $p=0.47$,
+determine the rejection region of the test.  Let me make a strong
+recommendation for working with counts here and not proportions.  So,
+for example, perhaps you find the integer $k$ such that
+$P(Bin(n,p) \le k) \le 0.05$ but $P(Bin(n,p) \le k+1) > 0.05$.  In this case,
+your rejection region would be "k or fewer women out of n exhibiting
+excessive weight gain" because it's this $k$ that gives you a p-value
+just less than (or possibly equal to, in rare cases) 0.05.
+
+Once you have determined the $k$ for this particular sample size $n$,
+calculate the power of the test.  If it is greater than 80\%, perhaps
+you can get away with a smaller sample size.  If it is less than 80\%,
+then perhaps you need a larger sample size.  The use of the word
+"perhaps" is not accidental.
+
+Carefully explore a range of values for $n$ until you can make the
+"best" sample size recommendation for this research project.
+
+Your solution should be presented in a fresh script (R or R Markdown
+-- your choice) with concise discussion and code that supports your
+answer.  No plots are necessary.  Do not include these instructions,
+and do not use R Markdown unless you are sure you can "knit" and
+print successfully.  Make sure your name, your last initial,
+and an acknowledgment of any collaborators are clearly marked at the top,
+regardless.
+

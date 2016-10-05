@@ -1,0 +1,51 @@
+---
+title: "Homework 4A"
+author: "Dingjue Ji"
+date: "Due Wednesday 10/5/2016, 1 PM"
+output: pdf_document
+---
+
+#Question Description
+$H_0$: $p = 0.47$
+
+$H_a$: $p < 0.47$
+
+$H_1$: $p = 0.27$
+
+$a$: 0.05 (single tailed)
+
+$power$: $P$(reject $H_0$|$H_1$)
+
+Try to find out the best sample size to make $power$ greater than 80\%
+
+#Statistical Power With Different Sample Size
+```{r}
+fpower <- function(n) {
+  k <- qbinom(0.05, n, prob = 0.47)
+  if (pbinom(k, n, prob = 0.47) > 0.05) k <- k -1
+  pbinom(k, n, prob = 0.27)
+}
+```
+
+Sample size corresponding to the power over 80%:
+
+```{r}
+powers <- sapply(1:50, fpower)
+sizes <- which(powers >= 0.80)
+cbind(sizes, powers[sizes])
+```
+
+It seems that when sample size is not smaller than 43, the statistical power is over 80\%. Sample size like 40 or 41 also works in this case. If there is no additional constraint, 40 samples will be enough for the statistical power and the power is 83.26\%.
+
+Note that we also want the margin of error for CI not to be very large. It can be a reference if there are any other requirements for the test.
+
+```{r}
+ME <- c()
+for(n in sizes){
+  z <- qbinom(0.05, n, prob = 0.47)
+  if (pbinom(z, n, prob = 0.47) > 0.05) z <- z - 1
+  ME<-c(ME, 0.47-z/n)
+}
+cbind(sizes, ME)
+```
+

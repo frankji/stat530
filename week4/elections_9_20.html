@@ -1,0 +1,1638 @@
+<!doctype html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta name="fragment" content="!">
+<script id="interior" type="text/javascript" src="/include/rc-meta.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta property="fb:pages" content="27088225427" />
+
+<link type="images/x-icon" href="/favicon.ico" rel="shortcut icon" /> 
+
+<link type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link type="text/css" href="http://fonts.googleapis.com/css?family=Domine:400,700" rel="stylesheet">
+<link type="text/css" href="/asset/top/master.css" rel="stylesheet" />
+<link type="text/css" href="/asset/vertical/rcp/rcp.css" rel="stylesheet" />
+<link type="text/css" href="/asset/top/facebox-comments.css" media="screen" rel="stylesheet" /> 
+
+
+<script type="text/javascript" src="/3rd_party/jquery/1.11.3.min.js"></script>
+<script type="text/javascript" src="/3rd_party/viewportSize/viewportSize-min.js"></script>
+<script type="text/javascript" src="http://c.amazon-adsystem.com/aax2/amzn_ads.js"></script> 
+<script type="text/javascript">
+	try {
+		amznads.getAds('3148');
+	} catch(e) { /*ignore*/}	
+</script>
+<script type="text/javascript"> 
+	var key = 'amznslots';
+	var values = amznads.getTokens(); //comma separated tokens 	 
+</script>
+
+<script src="/asset/top/StoryStream.js?v=1.0" type="text/javascript"></script>
+
+<script type="text/javascript" src="/asset/top/master.js?v=1.7" id="jsSite" data-site="politics" data-gaTag="" data-site-page="polls"></script>
+
+<script type="text/javascript" src="/asset/vertical/rcp/rcp.js?v=1.0"></script>
+
+<script src="/3rd_party/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="/3rd_party/waypoints/lib/shortcuts/inview.min.js"></script>
+
+<script type="text/javascript" async src="http://launch.newsinc.com/js/embed.js" id="_nw2e-js"></script>
+		
+			<meta name="title" content="RealClearPolitics - 2016 Election 2016 State Polls" />
+			<meta name="description" content="2016 Election 2016 State Polls" />
+			<meta name="keywords" content="politics" />
+			<meta property="og:title" content="RealClearPolitics - 2016 Election 2016 State Polls" />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content="http://www.realclearpolitics.com/epolls/latest_polls/state/index.html" />
+			<meta property="og:description" content="2016 Election 2016 State Polls" />
+			<meta property="fb:app_id" content="1415921935346245" />
+			<meta property="og:image" content="http://www.realclearpolitics.com/images/realclearpolitics_social_logo.png" /> 
+			<meta name="twitter:card" content="summary" />
+			<meta name="twitter:site" content="@@RealClearNews" />
+			<meta name="tweetmeme-title" content="RealClearPolitics - 2016 Election 2016 State Polls" />
+			
+			<meta name="format-detection" content="telephone=no"><title>RealClearPolitics - 2016 Election 2016 State Polls</title>
+				<script type="text/javascript" src="/asset/section/polls.js"></script>
+				<link type="text/css" rel="stylesheet" href="/asset/section/polls.css" />
+				<script type="text/javascript" src="/3rd_party/sorttable/sorttable.js"></script>
+				<script type="text/javascript" src="/3rd_party/typeahead/0.11.1/typeahead.bundle.js"></script>
+				<script type="text/javascript">
+
+					$(function()
+					{
+						showHideRaces();
+						fgetAllDataTables();
+					});
+
+					function fgetAllDataTables()
+					{
+						if (!document.getElementsByTagName) return false;
+						var eleTables = document.getElementsByTagName("table");
+						for (var i=0; i < eleTables.length; i++)
+						{
+							if (eleTables[i].className == "sortable")
+							{
+								fStripes(eleTables[i]);
+							}
+						}
+					}
+
+					function fStripes(eleTable)
+					{
+						var eleTableRows = eleTable.getElementsByTagName("tr");
+						for (var i=0; i < eleTableRows.length; i++)
+						{
+							eleTableRows[i].className = "alt";
+						}
+						for (var i=1; i < eleTableRows.length; i++)
+						{
+							eleTableRows[i].className = "";
+							i++;
+						}
+					}
+
+					var lp_els;
+					var lp_tables;
+					function showHideRaces()
+					{
+						var lp_els = $("#my-nav a.my-links");
+						var nextLink=document.getElementById("next");
+						var prevLink=document.getElementById("previous");
+						var myCounter=document.getElementById("counter");
+						var lp_tables=$(".table-races");
+						for(i=0;i<lp_els.length;i++){
+							lp_els[i].onclick=function(){
+								var vars=this.id.split("-");
+								var table=document.getElementById("table-"+vars[1]);
+								myCounter.value=parseInt(vars[1])-1;
+
+								for(p=0;p<lp_tables.length;p++){
+									lp_tables[p].className="table-races hide";
+									lp_els.eq(p).removeClass("on");
+								}
+								if(vars[1]==lp_els.length){
+									nextLink.className="hide";
+								}else{
+									nextLink.className="";
+								}
+								if(vars[1]==1){
+									prevLink.className="hide";
+								}else{
+									prevLink.className="";
+								}
+								this.className="on";
+								table.className="table-races";
+							}
+						}
+						nextLink.onclick=function(){
+							for(p=0;p<lp_tables.length;p++){
+								lp_tables[p].className="table-races hide";
+								lp_els.eq(p).removeClass("on");
+							}
+							var currentEl=(parseInt(myCounter.value)+1);
+
+							myCounter.value=currentEl
+							lp_els.eq(currentEl).addClass("on");
+							lp_tables[currentEl].className="table-races";
+							if((parseInt(currentEl)+1)==lp_els.length){
+								nextLink.className="hide";
+							}else{
+								nextLink.className="";
+							}
+							if((parseInt(currentEl)+1)==1){
+								prevLink.className="hide";
+							}else{
+								prevLink.className="";
+							}
+						}
+						prevLink.onclick=function(){
+							for(p=0;p<lp_tables.length;p++){
+								lp_tables[p].className="table-races hide";
+								lp_els.eq(p).removeClass("on");
+							}
+							var currentEl=(parseInt(myCounter.value)-1);
+							myCounter.value=currentEl
+							lp_els.eq(currentEl).addClass("on");
+							lp_tables[currentEl].className="table-races";
+							if((parseInt(currentEl)+1)==lp_els.length){
+								nextLink.className="hide";
+							}else{
+								nextLink.className="";
+							}
+							if((parseInt(currentEl)+1)==1){
+								prevLink.className="hide";
+							}else{
+								prevLink.className="";
+							}
+						}
+					}
+				</script>
+			</head>
+			<body class="polls">
+
+				<div id="container" class="dos-col">
+			<div id="masthead-wrapper" class="nav-down">
+    <div id="masthead">
+        <div class="top-bar"></div>
+        <div class="alpha-wrapper">
+            <div class="site-logo">
+                <a href="/"><img class="ss" src="/asset/img/rcp-logo-ss-red-250.gif"></a> 
+                        <span class="verticals-menu">
+                            <div class="verticals-wrapper">
+                                <img class="full-site-arrow" src="/asset/img/rcp-site-arrow.png" />
+                                <img class="mobile-site-arrow" src="/asset/img/mobile-site-arrow.png" />
+                                <span class="verticals-tab"></span>
+                                <div class="verticals-site-list">
+                                    <script src="/include/rcp_sites_nav.js" type="text/javascript"></script>
+                                </div>
+                            </div>
+                        </span>
+            </div>
+        </div>
+        <div class="beta-wrapper">
+            <div class="site-nav">
+                <script src="/include/masthead_nav.js" type="text/javascript"></script>
+            </div>
+            <div class="site-search mobile">
+                <form><input type="text" id="searchBox" name="q" /></form>
+            </div>
+            <div class="site-search-mobile"></div>
+        </div>
+    </div><!-- end inner masthead -->
+
+</div><!-- end masthead wrapper -->
+<div class="alpha-container">
+	<div class="alpha">
+
+		<div class="RC-AD RC-AD-TOP-BANNER"></div>
+		<div class="RC-AD RC-AD-MOBILE-BANNER"></div>
+
+		<div class="polls-header"><h1>Polls</h1></div>
+
+		<div class="polls_header_2_dropdown">
+	<div class="quick_links_content">
+		<script type="text/javascript" src="/quick_links/23.js"></script>
+	</div>
+	<div class="filter_content">
+
+		<div class="filter_section">
+			<h4>Year</h4>
+			<select class="multi_select" id="af_year" name="af_year[]" multiple="multiple">
+
+			</select>
+		</div>
+
+		<div class="filter_section">
+			<h4>State <button class="select_all_button">&larr; Select All</button></h4>
+			<select class="multi_select" id="af_state" name="af_state[]" multiple="multiple">
+
+			</select>
+		</div>
+
+		<div class="filter_section">
+			<h4>Type</h4>
+			<select class="multi_select" id="af_type" name="af_type[]" multiple="multiple">
+
+			</select>
+		</div>
+
+		<div class="filter_section">
+			<button class="filter_button">Apply Filter</button>
+			<button class="clear_filter_button">Clear Filter</button>
+		</div>
+
+		<div class="results">
+			<h4>Results</h4>
+			<div class="race_results">
+				Select one or more years, states and race types, then click "Apply Filter" to see results.
+			</div>
+		</div>
+
+	</div>
+	<div class="open">
+		<div class="arrow"><img src="/asset/img/grey-bg-chev.png" alt="Arrow" /></div>
+		<div class="quick_links_title">Quick <span>Poll/Map</span> Links</div>
+		<!--<div class="filter_title">Advanced Search</div>-->
+		<div class="find_a_poll_title"><span>Find Any Poll</span> <input type="text" id="find_a_poll" name="find_a_poll" placeholder="Try 'Clinton,' or 'Trump'" /></div>
+		<!--<div class="polls_dropdown"><script src="/epolls/2014/widget/2016_presidential_polls.js" type="text/javascript"></script></div>-->
+		<div class="polls_dropdown"><script src="/epolls/dropdown/2016_top_senate_races.js" type="text/javascript"></script></div>
+		<div class="polls_dropdown"><script src="/epolls/dropdown/2016_battleground_states.js" type="text/javascript"></script></div>
+	</div>
+</div>
+
+		<h2 class="page_title"><div>Election 2016 State Polls</div></h2>
+
+		<div class="polls-social">
+	<div class="socialBar" data-print="1" data-style="short" data-dialog="share">
+		<div class="left toolset"></div>
+	</div>
+
+	<div class="socialBar-clicks"></div>
+	<div class="socialBar-divide"> | </div>
+	<div class="socialBar-shares"></div>
+</div>
+
+		
+			<div class="latest_polls_under_title">
+				<a href="/epolls/latest_polls/elections/">Election Polls</a> | <a href="/epolls/latest_polls/president/">President Polls</a> | <a href="/epolls/latest_polls/state/">State Polls</a> | <a href="/epolls/latest_polls/senate/">Senate Polls</a> | <a href="/epolls/latest_polls/house/">House Polls</a> | <a href="/epolls/latest_polls/governor/">Governor Polls</a> | <a href="/epolls/latest_polls/state_of_the_union/">Approval Polls</a>			</div>
+		
+		<div class="clearfix"></div>
+
+		<div id="table-1" class="table-races">
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, September 20</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_FL_092016/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 46, Trump 41, Johnson 6, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Nevada: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.rasmussenreports.com/public_content/politics/elections/election_2016/nevada/election_2016_nevada_president">Rasmussen Reports</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Trump 42, Clinton 39, Johnson 11</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://wncn.com/2016/09/20/trump-clinton-tied-in-nc-new-poll-says/">Elon</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 44, Clinton 43, Johnson 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Maine: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://mprc.me/research/0916_presidential.pdf">MPRC (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Clinton 37, Trump 37, Johnson 11, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Maine CD2: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://mprc.me/research/0916_presidential.pdf">MPRC (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Trump 44, Clinton 33, Johnson 10, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +11</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Maine CD1: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://mprc.me/research/0916_presidential.pdf">MPRC (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Clinton 41, Trump 30, Johnson 12, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +11</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ca/california_trump_vs_clinton_vs_johnson_vs_stein-6083.html">California: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.field.com/fieldpollonline/subscribers/Rls2545.pdf">Field</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ca/california_trump_vs_clinton_vs_johnson_vs_stein-6083.html">Clinton 50, Trump 33, Johnson 5, Stein 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +17</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">New York: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.siena.edu/assets/files/news/SNY_September_2016_Poll_Release_--_Final345.pdf">Siena</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">Clinton 51, Trump 30, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +21</span></font></td>
+			</tr></table><div class="RC-AD RC-AD-BOX-TOP"></div>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Monday, September 19</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.siena.edu/news-events/article/clinton-41-trump-40-in-four-way-sunshine-state-race">NY Times/Siena</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 41, Trump 40, Johnson 9, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.siena.edu/news-events/article/clinton-41-trump-40-in-four-way-sunshine-state-race">NY Times/Siena</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 43, Trump 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Georgia: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_GA_091916/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Trump 45, Clinton 42, Johnson 8</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/il/illinois_trump_vs_clinton_vs_johnson_vs_stein-6140.html">Illinois: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://myweb.loras.edu/Loras/PDF/LorasILSurveySept2016.pdf">Loras</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/il/illinois_trump_vs_clinton_vs_johnson_vs_stein-6140.html">Clinton 43, Trump 30, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +13</span></font></td>
+			</tr></table><div class="RC-AD RC-AD-BOX-MIDDLE mobile_only"></div>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Sunday, September 18</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mn/minnesota_trump_vs_clinton_vs_johnson_vs_stein-6138.html">Minnesota: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.startribune.com/complete-minnesota-poll-results-presidential-race/393710181/">Star Tribune</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mn/minnesota_trump_vs_clinton_vs_johnson_vs_stein-6138.html">Clinton 44, Trump 38, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +6</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.mcall.com/news/local/elections/mc-pa-trump-clinton-poll-20160917-story.html">Morning Call</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 40, Trump 32, Johnson 14, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Saturday, September 17</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ok/oklahoma_trump_vs_clinton_vs_johnson-6085.html">Oklahoma: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://soonerpoll.com/oklahoman-clinton-gains-some-ground-on-trump-in-state-poll-shows/">Sooner Poll</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ok/oklahoma_trump_vs_clinton_vs_johnson-6085.html">Trump 51, Clinton 36, Johnson 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +15</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Thursday, September 15</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Colorado: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_b53ca6b673c14cdab9d68832bd7e74cb.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Clinton 38, Trump 42, Johnson 13, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Iowa: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_IA_091516/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Trump 45, Clinton 37, Johnson 8, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +8</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Michigan: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.freep.com/story/news/politics/2016/09/15/donald-trump-hillary-clinton-michigan-poll/90381296/">Detroit Free Press</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Clinton 38, Trump 35, Johnson 10, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.suffolk.edu/documents/SUPRC/9_15_2016_marginals.pdf">Suffolk</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 42, Clinton 39, Johnson 4, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson_vs_stein-6009.html">Missouri: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_b53ca6b673c14cdab9d68832bd7e74cb.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson_vs_stein-6009.html">Trump 47, Clinton 34, Johnson 7, Stein 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +13</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.umw.edu/news/wp-content/uploads/sites/7/2016/09/UMW-VA-Survey-2016_First-Release-Topline.pdf">Univ. of Mary Washington</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 40, Trump 37, Johnson 8, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="https://www.nccivitas.org/2016/new-civitas-poll-shows-trump-and-hillary-in-dead-heat/">Civitas (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 42, Clinton 42, Johnson 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Georgia: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://opinionsavvy.com/wp-content/uploads/2016/09/OS-GA-General-9.15.16.pdf">FOX 5 Atlanta</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Trump 46, Clinton 42, Johnson 10</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Georgia: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_b53ca6b673c14cdab9d68832bd7e74cb.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Trump 45, Clinton 39, Johnson 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +6</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Texas: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.texaslyceum.org/resources/Pictures/Texas%20Lyceum%202016%20Poll%20Topline.pdf">Texas Lyceum</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Trump 39, Clinton 32, Johnson 9, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +7</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ar/arkansas_trump_vs_clinton_vs_johnson_vs_stein-6137.html">Arkansas: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_b53ca6b673c14cdab9d68832bd7e74cb.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ar/arkansas_trump_vs_clinton_vs_johnson_vs_stein-6137.html">Trump 57, Clinton 29, Johnson 5, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +28</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Wednesday, September 14</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.cnn.com/2016/09/14/politics/cnn-orc-poll-florida-ohio-donald-trump-hillary-clinton/index.html">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 44, Trump 47, Johnson 6, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.cnn.com/2016/09/14/politics/cnn-orc-poll-florida-ohio-donald-trump-hillary-clinton/index.html">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 46, Trump 50</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/09/14/ohiopoll.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 46, Clinton 41, Johnson 8, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Ohio: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/09/14/ohiopoll.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Trump 50, Clinton 46</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://assets.bwbx.io/documents/users/iqjWHBFdfxIU/r2.771xfmKOI/v0">Bloomberg</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 44, Clinton 39, Johnson 10, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Ohio: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://assets.bwbx.io/documents/users/iqjWHBFdfxIU/r2.771xfmKOI/v0">Bloomberg</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Trump 48, Clinton 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Nevada: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_NV_091416/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Trump 44, Clinton 42, Johnson 8</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Maine: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.bostonglobe.com/news/politics/2016/09/13/new-poll-shows-competitive-race-maine/YNsB57jVpHmEJcJsFZRXMP/story.html?event=event25">Colby College/SurveyUSA</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Clinton 42, Trump 39, Johnson 9, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Maine CD2: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.colby.edu/goldfarb/elections/colby-globe-election-poll">Colby College/SurveyUSA</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Trump 47, Clinton 37, Johnson 8, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +10</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Maine CD1: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.colby.edu/goldfarb/elections/colby-globe-election-poll">Colby College/SurveyUSA</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Clinton 49, Trump 31, Johnson 9, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +18</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ma/massachusetts_trump_vs_clinton_vs_johnson_vs_stein-6122.html">Massachusetts: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://d279m997dpfwgl.cloudfront.net/wp/2016/09/Topline-2016-09-WBUR-MA-Full-Survey.pdf">WBUR/MassINC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ma/massachusetts_trump_vs_clinton_vs_johnson_vs_stein-6122.html">Clinton 54, Trump 28, Johnson 9, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +26</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ks/kansas_trump_vs_clinton_vs_johnson_vs_stein-6131.html">Kansas: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.surveyusa.com/client/PollReport.aspx?g=75f6eaff-73bc-4e49-a83f-588adb59bed7">KSN News/SurveyUSA</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ks/kansas_trump_vs_clinton_vs_johnson_vs_stein-6131.html">Trump 48, Clinton 36, Johnson 8, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +12</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/sc/south_carolina_trump_vs_clinton_vs_johnson_vs_stein-6093.html">South Carolina: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://drive.google.com/file/d/0B4lhKxf9pMitUjZhbDJwVGQteTA/view">Trafalgar Group (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/sc/south_carolina_trump_vs_clinton_vs_johnson_vs_stein-6093.html">Trump 53, Clinton 38, Johnson 3, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +15</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, September 13</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_VA_91316.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 45, Trump 39, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +6</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Virginia: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_VA_91316.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Clinton 50, Trump 42</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Texas: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_01dca97a9c05411984c50df92d62cf50.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Trump 42, Clinton 36, Johnson 10, Stein 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +6</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ca/california_trump_vs_clinton_vs_johnson_vs_stein-6083.html">California: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.surveyusa.com/client/PollReport.aspx?g=be4ba04e-e65c-4fbc-9d1c-bf87874ec85d&utm_source=twitterfeed&utm_medium=twitter">KABC/SurveyUSA</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ca/california_trump_vs_clinton_vs_johnson_vs_stein-6083.html">Clinton 57, Trump 32, Johnson 3, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +25</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Monday, September 12</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/JMC_FL_Sept_2016.pdf">JMC Analytics</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 42, Trump 46, Johnson 3, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Michigan: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/FOX_2_Detroit-Mitchell_Poll_of_MI_Press_Clinton_v_Trump_9-9-16.pdf">FOX 2 Detroit/Mitchell</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Clinton 45, Trump 39, Johnson 7, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +6</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton-5533.html">Michigan: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/FOX_2_Detroit-Mitchell_Poll_of_MI_Press_Clinton_v_Trump_9-9-16.pdf">FOX 2 Detroit/Mitchell</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton-5533.html">Clinton 47, Trump 42</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ut/utah_trump_vs_clinton_vs_johnson_vs_stein-5971.html">Utah: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://utahpolicy.com/index.php/features/today-at-utah-policy/10765-poll-trump-holds-15-point-lead-over-clinton-in-utah">UtahPolicy/Dan Jones</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ut/utah_trump_vs_clinton_vs_johnson_vs_stein-5971.html">Trump 39, Clinton 24, Johnson 13, Stein 0</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +15</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Sunday, September 11</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson_vs_stein-6086.html">Nevada: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578717/NBC-News-WSJ-Marist-Poll-Nevada-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson_vs_stein-6086.html">Trump 42, Clinton 41, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton-5891.html">Nevada: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578717/NBC-News-WSJ-Marist-Poll-Nevada-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton-5891.html">Trump 44, Clinton 45</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Arizona: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578461/NBC-News-WSJ-Marist-Poll-Arizona-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Trump 40, Clinton 38, Johnson 12, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton-5832.html">Arizona: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578461/NBC-News-WSJ-Marist-Poll-Arizona-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton-5832.html">Trump 42, Clinton 41</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">New Hampshire: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578761/NBC-News-WSJ-Marist-Poll-New-Hampshire-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">Clinton 39, Trump 37, Johnson 15, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton-5596.html">New Hampshire: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578761/NBC-News-WSJ-Marist-Poll-New-Hampshire-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton-5596.html">Clinton 42, Trump 41</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Georgia: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578461/NBC-News-WSJ-Marist-Poll-Arizona-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Trump 44, Clinton 42, Johnson 10</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton-5741.html">Georgia: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323578461/NBC-News-WSJ-Marist-Poll-Arizona-Annotated-Questionnaire-September-2016">NBC/WSJ/Marist</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton-5741.html">Trump 46, Clinton 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323620143/CBS-News-2016-Battleground-Tracker-Florida-September-11-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 44, Trump 42, Johnson 5, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/323620144/CBS-News-2016-Battleground-Tracker-Ohio-September-11-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 39, Clinton 46, Johnson 7, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +7</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Friday, September 9</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/in/indiana_trump_vs_clinton_vs_johnson-6108.html">Indiana: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.wthr.com/article/exclusive-wthrhpi-poll-trump-has-solid-lead-on-clinton">WTHR/Howey Politics</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/in/indiana_trump_vs_clinton_vs_johnson-6108.html">Trump 43, Clinton 36, Johnson 11</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +7</span></font></td>
+			</tr></table></div><div id="table-2" class="table-races hide">
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Thursday, September 8</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 43, Trump 43, Johnson 8, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 47, Trump 47</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 41, Clinton 37, Johnson 14, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Ohio: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton-5634.html">Trump 46, Clinton 45</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 44, Trump 39, Johnson 9, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton-5633.html">Pennsylvania: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton-5633.html">Clinton 48, Trump 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 38, Clinton 42, Johnson 15</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.suffolk.edu/academics/1094.php">Suffolk</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 44, Clinton 41, Johnson 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton-5538.html">North Carolina: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps09082016_pg92cxm.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton-5538.html">Trump 43, Clinton 47</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Colorado: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://magellanstrategies.com/colorado-2016-presidential-voter-opinion-survey/">Magellan (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Clinton 41, Trump 36, Johnson 13, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/or/oregon_trump_vs_clinton_vs_johnson_vs_stein-6079.html">Oregon: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://katu.com/news/politics/poll-clinton-leads-trump-in-oregon-brown-over-pierce">DHM Research</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/or/oregon_trump_vs_clinton_vs_johnson_vs_stein-6079.html">Clinton 38, Trump 25, Johnson 10, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +13</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Wednesday, September 7</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_FL_90716.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 43, Trump 44, Johnson 5, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_FL_90716.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 47, Trump 46</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">New Hampshire: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">Clinton 42, Trump 37, Johnson 14, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Maine: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/me/maine_trump_vs_clinton_vs_johnson_vs_stein-6091.html">Clinton 44, Trump 35, Johnson 12, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +9</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Maine CD2: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd2/maine_cd2_trump_vs_clinton_vs_johnson_vs_stein-6127.html">Trump 41, Clinton 36, Johnson 14, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Maine CD1: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mecd1/maine_cd1_trump_vs_clinton_vs_johnson_vs_stein-6135.html">Clinton 52, Trump 30, Johnson 9, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +22</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/vt/vermont_trump_vs_clinton_vs_johnson_vs_stein-6121.html">Vermont: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/vt/vermont_trump_vs_clinton_vs_johnson_vs_stein-6121.html">Clinton 47, Trump 26, Johnson 13, Stein 7</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +21</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ma/massachusetts_trump_vs_clinton_vs_johnson_vs_stein-6122.html">Massachusetts: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ma/massachusetts_trump_vs_clinton_vs_johnson_vs_stein-6122.html">Clinton 50, Trump 33, Johnson 9, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +17</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ri/rhode_island_trump_vs_clinton_vs_johnson_vs_stein-6124.html">Rhode Island: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ri/rhode_island_trump_vs_clinton_vs_johnson_vs_stein-6124.html">Clinton 44, Trump 41, Johnson 8, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ct/connecticut_trump_vs_clinton_vs_johnson_vs_stein-5959.html">Connecticut: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ct/connecticut_trump_vs_clinton_vs_johnson_vs_stein-5959.html">Clinton 50, Trump 35, Johnson 9, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +15</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nj/new_jersey_trump_vs_clinton_vs_johnson_vs_stein-6126.html">New Jersey: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_dd659ad4faf34206969d7dbef07995e2.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nj/new_jersey_trump_vs_clinton_vs_johnson_vs_stein-6126.html">Clinton 47, Trump 43, Johnson 5, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +4</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Arizona: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.azcentral.com/story/news/politics/elections/2016/09/07/poll-arizona-toss-up-between-hillary-clinton-donald-trump/89919308/?hootPostID=a6dc2f8a466823e45aebf72da1f6c8dc">Arizona Republic</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Trump 34, Clinton 35, Johnson 7, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, September 6</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson_vs_stein-6009.html">Missouri: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://themissouritimes.com/33365/poll-shows-republicans-koster-well/">Remington Research (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson_vs_stein-6009.html">Trump 47, Clinton 38, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +9</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/md/maryland_trump_vs_clinton_vs_johnson_vs_stein-6119.html">Maryland: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.baltimoresun.com/news/maryland/politics/bs-md-trump-clinton-poll-20160906-story.html">OpinionWorks</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/md/maryland_trump_vs_clinton_vs_johnson_vs_stein-6119.html">Clinton 54, Trump 25, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +29</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/id/idaho_trump_vs_clinton_vs_johnson_vs_stein-6016.html">Idaho: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://idahopoliticsweekly.com/politics/1218-Bob%20Bernick,%20Idaho%20Politics%20Weekly%20Contributor">Idaho Politics/Dan Jones</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/id/idaho_trump_vs_clinton_vs_johnson_vs_stein-6016.html">Trump 44, Clinton 23, Johnson 13, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +21</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Sunday, September 4</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/322977191/CBS-News-Battleground-Tracker-Pennsylvania-September-4#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 45, Trump 37, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">North Carolina: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/322977203/CBS-News-Battleground-Tracker-North-Carolina-September-4#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">Clinton 46, Trump 42, Johnson 4, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +4</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Friday, September 2</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Iowa: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_ce9f61436f9b420dbb5ef12240d1424a.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Trump 44, Clinton 39, Johnson 8, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_ce9f61436f9b420dbb5ef12240d1424a.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 44, Trump 43, Johnson 11, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">New Hampshire: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://cola.unh.edu/sites/cola.unh.edu/files/research_publications/gsp2016_summer_preselect090216.pdf">WMUR/UNH</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">Clinton 43, Trump 32, Johnson 12, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +11</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton-5596.html">New Hampshire: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://cola.unh.edu/sites/cola.unh.edu/files/research_publications/gsp2016_summer_preselect090216.pdf">WMUR/UNH</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton-5596.html">Clinton 45, Trump 36</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +9</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Thursday, September 1</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Virginia: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/322749371/Hampton-University-Center-for-Public-Policy-Presidential-Poll#from_embed">Hampton University</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Clinton 43, Trump 41</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/Franklin_Marshall_Penn_2016.pdf">Franklin & Marshall</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 45, Trump 40, Johnson 5, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton-5633.html">Pennsylvania: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.fandm.edu/uploads/files/976089416682518756-f-m-poll-release-august-2016-1.pdf">Franklin & Marshall</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton-5633.html">Clinton 47, Trump 40</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +7</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/wv/west_virginia_trump_vs_clinton_vs_johnson_vs_stein-6116.html">West Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://wvmetronews.com/2016/09/01/metronews-west-virginia-poll-trump-still-the-choice-of-mountain-state-voters/">MetroNews</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/wv/west_virginia_trump_vs_clinton_vs_johnson_vs_stein-6116.html">Trump 49, Clinton 31, Johnson 10, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +18</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Wednesday, August 31</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton_vs_johnson_vs_stein-5976.html">Wisconsin: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.postcrescent.com/story/news/politics/elections/2016/08/31/mu-poll-shows-clinton-leads-trump/89647684/?hootPostID=b1a15843e16522983fa02c1e930202db">Marquette</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton_vs_johnson_vs_stein-5976.html">Clinton 41, Trump 38, Johnson 10, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton-5659.html">Wisconsin: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.postcrescent.com/story/news/politics/elections/2016/08/31/mu-poll-shows-clinton-leads-trump/89647684/?hootPostID=b1a15843e16522983fa02c1e930202db">Marquette</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton-5659.html">Clinton 45, Trump 42</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton_vs_johnson_vs_stein-5976.html">Wisconsin: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/wi/wisconsin_trump_vs_clinton_vs_johnson_vs_stein-5976.html">Clinton 43, Trump 38, Johnson 7, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">North Carolina: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_3a8db9da60ec4ceb961732ea0d849022.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">Clinton 43, Trump 45, Johnson 8, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +2</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">New York: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_7e2146163ed04e60b05172ef8e530182.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">Clinton 52, Trump 34, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +18</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Arizona: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.breitbart.com/big-government/2016/08/31/exclusive-breitbartgravis-arizona-presidential-poll-trump-44-clinton-40-with-johnson-8-stein-1/">Gravis</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Trump 44, Clinton 40, Johnson 8, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, August 30</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_PA_083016/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 48, Trump 40, Johnson 6, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Monday, August 29</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Pennsylvania: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_865ec63b1c494be78da4af7d7834766c.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/pa/pennsylvania_trump_vs_clinton_vs_johnson_vs_stein-5964.html">Clinton 46, Trump 43, Johnson 7, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_865ec63b1c494be78da4af7d7834766c.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 43, Clinton 43, Johnson 10, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Michigan: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://media.wix.com/ugd/3bebb2_865ec63b1c494be78da4af7d7834766c.pdf">Emerson</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Clinton 45, Trump 40, Johnson 7, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Arizona: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://email.connectstrategic.com/t/j-73630F4BD52B12D8">OH Predictive Insights</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Trump 39, Clinton 40, Johnson 7, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Friday, August 26</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/Mason_Dixon_FL_Aug_2016.pdf">Mason-Dixon</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 44, Trump 42, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr></table></div><div id="table-3" class="table-races hide">
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Thursday, August 25</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.flchamber.com/politicians-parties-and-plaintiff-trial-lawyers-are-unknown-or-unliked-in-new-florida-chamber-of-commerce-statewide-poll/">FL Chamber</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 43, Trump 44</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Michigan: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.suffolk.edu/documents/SUPRC/8_25_2016_final_marginals.pdf">Suffolk University</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Clinton 44, Trump 37, Johnson 5, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +7</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Wednesday, August 24</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Florida: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/FAU_Florida_August.pdf">Florida Atlantic University*</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton-5635.html">Clinton 41, Trump 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +2</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton-5538.html">North Carolina: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/08/24/topnc1.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton-5538.html">Trump 47, Clinton 48</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/08/24/topnc1.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 45, Clinton 45, Johnson 9</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">North Carolina: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_NC_082416/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson-5951.html">Trump 42, Clinton 44, Johnson 7</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton-5832.html">Arizona: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/08/24/topaz1.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton-5832.html">Trump 49, Clinton 44</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Arizona: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://i2.cdn.turner.com/cnn/2016/images/08/24/topaz1.pdf">CNN/ORC</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/az/arizona_trump_vs_clinton_vs_johnson_vs_stein-6087.html">Trump 45, Clinton 38, Johnson 12, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +7</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nm/new_mexico_trump_vs_clinton_vs_johnson_vs_stein-6113.html">New Mexico: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://nmpoliticalreport.com/89809/poll-clinton-leads-trump-in-nm-johnson-strong/">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nm/new_mexico_trump_vs_clinton_vs_johnson_vs_stein-6113.html">Clinton 40, Trump 31, Johnson 16, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +9</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, August 23</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.roanoke.edu/about/news/rc_poll_aug_2016_politics">Roanoke College</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 48, Trump 32, Johnson 8, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +16</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson-6077.html">Missouri: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_MO_082316/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mo/missouri_trump_vs_clinton_vs_johnson-6077.html">Trump 44, Clinton 43, Johnson 8</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ut/utah_trump_vs_clinton_vs_johnson_vs_stein-5971.html">Utah: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_UT_82316.pdf">PPP (D)*</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ut/utah_trump_vs_clinton_vs_johnson_vs_stein-5971.html">Trump 39, Clinton 24, Johnson 12, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +15</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Monday, August 22</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_OH_082216/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 39, Clinton 43, Johnson 10, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +4</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Sunday, August 21</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Ohio: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/321810660/CBS-News-2016-Battleground-Tracker-Ohio-August-21-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/oh/ohio_trump_vs_clinton_vs_johnson_vs_stein-5970.html">Trump 40, Clinton 46, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +6</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Iowa: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/321810686/CBS-News-2016-Battleground-Tracker-Iowa-August-21-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Trump 40, Clinton 40, Johnson 7, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">North Carolina: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://gravismarketing.com/polling-and-market-research/current-north-carolina-polling-2/">Gravis</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nc/north_carolina_trump_vs_clinton_vs_johnson_vs_stein-5972.html">Clinton 38, Trump 39, Johnson 10, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +1</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/sc/south_carolina_trump_vs_clinton_vs_johnson_vs_stein-6093.html">South Carolina: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://gravismarketing.com/news/current-south-carolina-polling/">Gravis</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/sc/south_carolina_trump_vs_clinton_vs_johnson_vs_stein-6093.html">Trump 41, Clinton 37, Johnson 7, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Thursday, August 18</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Georgia: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://opinionsavvy.com/wp-content/uploads/2016/08/OS-GA-General-8.18.16.pdf">FOX 5 Atlanta</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson-5968.html">Trump 43, Clinton 43, Johnson 11</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Nevada: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.suffolk.edu/academics/10740.php">Suffolk</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nv/nevada_trump_vs_clinton_vs_johnson-6004.html">Trump 42, Clinton 44, Johnson 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson_vs_stein-5954.html">Georgia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://opinionsavvy.com/wp-content/uploads/2016/08/OS-GA-General-8.18.16.pdf">FOX 5 Atlanta*</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson_vs_stein-5954.html">Trump 43, Clinton 43, Johnson 11, Stein</a></td>
+				<td class="lp-spread"><font color="black"><span class="">Tie</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Wednesday, August 17</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton-5751.html">Colorado: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton-5751.html">Clinton 49, Trump 39</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +10</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Colorado: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/co/colorado_trump_vs_clinton_vs_johnson_vs_stein-5974.html">Clinton 41, Trump 33, Johnson 16, Stein 7</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton-5597.html">Iowa: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton-5597.html">Trump 44, Clinton 47</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +3</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Iowa: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ia/iowa_trump_vs_clinton_vs_johnson_vs_stein-5981.html">Trump 39, Clinton 41, Johnson 12, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +2</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Virginia: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Clinton 50, Trump 38</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +12</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.qu.edu/images/polling/ps/ps08172016_Spk79cr.pdf">Quinnipiac</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 45, Trump 34, Johnson 11, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +11</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/in/indiana_trump_vs_clinton_vs_johnson-6108.html">Indiana: Trump vs. Clinton vs. Johnson</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_IN_081716/">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/in/indiana_trump_vs_clinton_vs_johnson-6108.html">Trump 47, Clinton 36, Johnson 10</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +11</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton-5533.html">Michigan: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/MI_8-16_FOX_2_Detroit_-_Mitchell_Poll_of_MI_Press_Clinton_v_Trump_8-16-16_A.pdf">FOX 2 Detroit/Mitchell</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton-5533.html">Clinton 49, Trump 39</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +10</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Michigan: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/MI_8-16_FOX_2_Detroit_-_Mitchell_Poll_of_MI_Press_Clinton_v_Trump_8-16-16_A.pdf">FOX 2 Detroit/Mitchell</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/mi/michigan_trump_vs_clinton_vs_johnson_vs_stein-6008.html">Clinton 44, Trump 33, Johnson 9, Stein 5</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +11</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ms/mississippi_trump_vs_clinton-5857.html">Mississippi: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/MagellanBR-YP_Poll_Toplines_081616.pdf">Magellan (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ms/mississippi_trump_vs_clinton-5857.html">Trump 54, Clinton 39</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +15</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ms/mississippi_trump_vs_clinton_vs_johnson_vs_stein-6106.html">Mississippi: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/MagellanBR-YP_Poll_Toplines_081616.pdf">Magellan (R)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ms/mississippi_trump_vs_clinton_vs_johnson_vs_stein-6106.html">Trump 52, Clinton 39, Johnson 3, Stein 0</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +13</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Tuesday, August 16</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Virginia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.washingtonpost.com/page/2010-2019/WashingtonPost/2016/08/16/National-Politics/Polling/question_17048.xml?uuid=hON_BGOgEea02DPpMbWibQ">Washington Post</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton_vs_johnson_vs_stein-5966.html">Clinton 46, Trump 39, Johnson 9, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +7</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Virginia: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.washingtonpost.com/local/virginia-politics/trump-unpopularity-fuels-wide-lead-for-clinton-in-new-virginia-poll/2016/08/15/ea0e1540-6307-11e6-be4e-23fc4d4d12b4_story.html">Washington Post</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/va/virginia_trump_vs_clinton-5542.html">Clinton 51, Trump 43</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +8</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.monmouth.edu/polling-institute/reports/MonmouthPoll_FL_081616.asp">Monmouth</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 48, Trump 39, Johnson 6, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +9</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Texas: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_TX_81616.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton_vs_johnson_vs_stein-6104.html">Trump 44, Clinton 38, Johnson 6, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +6</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton-5694.html">Texas: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="http://www.publicpolicypolling.com/pdf/2015/PPP_Release_TX_81616.pdf">PPP (D)</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/tx/texas_trump_vs_clinton-5694.html">Trump 50, Clinton 44</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +6</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Monday, August 15</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton-5792.html">New York: Trump vs. Clinton</a></td>
+				<td class="lp-poll"><a href="https://www.siena.edu/assets/files/news/SNY_August_2016_Poll_Release_3987--_FINAL.pdf">Siena</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton-5792.html">Clinton 57, Trump 27</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +30</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/wa/washington_trump_vs_clinton_vs_johnson_vs_stein-6102.html">Washington: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="http://www.realclearpolitics.com/docs/2016/Elway-Poll-Governor-President-081516.pdf">Elway Poll</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/wa/washington_trump_vs_clinton_vs_johnson_vs_stein-6102.html">Clinton 43, Trump 24, Johnson 7, Stein 4</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +19</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">New York: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.siena.edu/assets/files/news/SNY0816_Crosstabs_3987_081516.pdf">Siena</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ny/new_york_trump_vs_clinton_vs_johnson_vs_stein-6014.html">Clinton 50, Trump 25, Johnson 9, Stein 6</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +25</span></font></td>
+			</tr></table>
+				<table cellpadding="2" cellspacing="0">
+					<tr>
+						<td colspan="6" class="date"><b>Sunday, August 14</b></td>
+					</tr>
+				</table>
+				<table cellpadding="2" cellspacing="0" class="sortable">
+					<tr>
+						<th class="clickable lp-race"><strong>Race/Topic</strong> &nbsp;&nbsp;<span class="click-sort">(Click to Sort)</span></th>
+						<th class="sorttable_nosort lp-poll"><strong>Poll</strong></th>
+						<th class="sorttable_nosort lp-resluts"><strong>Results</strong></th>
+						<th class="sorttable_nosort lp-spread"><strong>Spread</strong></th>
+					</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Florida: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/321143622/CBS-News-2016-Battleground-Tracker-Florida-August-14-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/fl/florida_trump_vs_clinton_vs_johnson_vs_stein-5963.html">Clinton 45, Trump 40, Johnson 5, Stein 2</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +5</span></font></td>
+			</tr>
+			<tr class="alt">
+				<td class="lp-race"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson_vs_stein-5954.html">Georgia: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/321143715/CBS-News-2016-Battleground-Tracker-Georgia-August-14-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/ga/georgia_trump_vs_clinton_vs_johnson_vs_stein-5954.html">Trump 45, Clinton 41, Johnson 5, Stein 1</a></td>
+				<td class="lp-spread"><font color="black"><span class="rep">Trump +4</span></font></td>
+			</tr>
+			<tr class="">
+				<td class="lp-race"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">New Hampshire: Trump vs. Clinton vs. Johnson vs. Stein</a></td>
+				<td class="lp-poll"><a href="https://www.scribd.com/document/321143778/CBS-News-2016-Battleground-Tracker-New-Hampshire-August-14-2016#from_embed">CBS News/YouGov</a></td>
+				<td class="lp-results"><a href="/epolls/2016/president/nh/new_hampshire_trump_vs_clinton_vs_johnson_vs_stein-6022.html">Clinton 45, Trump 36, Johnson 5, Stein 3</a></td>
+				<td class="lp-spread"><font color="black"><span class="dem">Clinton +9</span></font></td>
+			</tr></table></div>
+			<p id="my-nav">
+				<a href="#" class="hide" id="previous">&laquo; Previous</a>
+				<a href="#" class="on my-links" id="link-1">1</a>
+				<a href="#" class="my-links" id="link-2">2</a><a href="#" class="my-links" id="link-3">3</a>
+				<a href="#" id="next">Next &raquo;</a>
+				<input type="hidden" id="counter" value="0" />
+			</p>
+			
+		<a name="short-news"></a>
+		<div id="short_news">
+			<script src="/epolls/includes/epoll_news.js" type="text/javascript"></script>
+		</div>
+
+		<div class="RC-AD RC-AD-BOTTOM-BANNER"></div>
+		<div class="RC-AD RC-AD-BOX-BOTTOM"></div>
+
+	</div><!-- end alpha div -->
+</div><!-- end alpha-container div -->
+
+<div class="beta-container">
+	<div class="beta">
+
+		<div class="widget_slot init"></div>
+
+		<div class="widget_slot" style="margin-bottom:20px;">
+			<div class="rec-widget-header">
+				<div class="rec-title" style="color:#fff">Partner Videos</div>
+			</div>
+			<div class="rec-link-body">
+				<div class="ndn_embed" data-config-widget-id="17779" data-config-type="VideoLauncher/Slider300x250" data-config-tracking-group="12672"></div>
+			</div>
+		</div>				
+
+		<div class="RC-AD RC-AD-BOX-TOP"></div>
+
+		<div class="widget_slot init"></div>
+
+		<div class="RC-AD RC-AD-BOX-MIDDLE"></div>
+
+		<div class="widget_slot init"></div>
+
+		<div class="RC-AD RC-AD-BOX-BOTTOM-600"></div>
+
+		<div class="widget_slot init"></div>
+
+	</div>
+</div><!-- end beta div -->
+</div><!-- end container div --><div class="footer-wrapper">
+    <div class="footer">
+        <div class="footer-logo">
+            <span class="site-tab"></span> 
+            <img src="/asset/img/rcp-logo-footer.png" /> 
+        </div>
+        
+        <div class="footer-social">
+            <div class="socialBar" data-style="site" data-dialog="share"><div class="left toolset"></div></div>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <div class="footer-links">
+            <script type="text/javascript" src="/include/footer_links.js"></script>
+        </div>
+        
+        <div class="footer-info">
+            <div class="info-links">
+                <script type="text/javascript" src="/include/footer_info_links.js"></script>
+            </div>
+        </div>
+
+        <div class="mobile-footer">
+            <div class="mobile-copyright">&copy;2016 RealClearPolitics | <a onClick="loadDesktop();" class="view-desktop">Go to full site</a></div>
+        </div>
+
+    </div> 
+</div>
+<script type="text/javascript" src="/include/internal.js?v=1"></script>
+<script type="text/javascript" src="/include/footer_includes_before_body.js?v=1"></script> 
+
+
+<script>var isAdBlockActive = true;</script>
+<script src="/scripts/ads.js"></script>  <!--adblocker will not allow this file to run --> 
+<script type="text/javascript"> 
+if (isAdBlockActive) { 
+  console.log("The visitor is blocking ads");  
+  checkIfAnalyticsLoaded();
+}  
+
+function checkIfAnalyticsLoaded() {
+  if (window._gat && window._gat._getTracker) {
+        console.log("GA loaded");  
+        //Wrap event tracking call to prevent premature termination of this function.
+        try{
+            var cur_body_class = document.body.getAttribute('class').split(/\s+/); 
+            _gaq.push(['_trackEvent', 'AdBlocker', 'adblocker-blocked', 'section: '+cur_body_class[0]]);
+            //console.log('trackevent: '+data['ge_category']+' '+data['ge_action']+' '+data['ge_label']);
+        } catch(err) {}
+
+  } else {
+    //check in 500 ms
+    setTimeout('checkIfAnalyticsLoaded()', 500);
+  }
+}
+</script>  
+			</body>
+			</html>
+			
